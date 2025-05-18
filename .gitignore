@@ -1,24 +1,41 @@
-/.phpunit.cache
+# --- Laravel essentials ---
+/vendor
 /node_modules
+
+.env
+.env.*
+auth.json
+
+# --- Public build assets ---
 /public/build
 /public/hot
 /public/storage
+
+# --- Storage and logs ---
 /storage/*.key
 /storage/pail
-/vendor
-.env
-.env.backup
-.env.production
-.phpactor.json
+/storage/logs/*.log
+/storage/*.log
+
+# Allow uploaded files to be saved to Git (folder only)
+/storage/app/public/*
+!/storage/app/public/.gitkeep
+
+# --- Laravel testing/dev ---
 .phpunit.result.cache
+.phpactor.json
+
+# --- Homestead ---
 Homestead.json
 Homestead.yaml
-auth.json
+
+# --- NPM/Yarn errors ---
 npm-debug.log
 yarn-error.log
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
 
+# --- IDEs and tools ---
+/.idea
+/.vscode
+/.nova
+/.fleet
+/.zed
