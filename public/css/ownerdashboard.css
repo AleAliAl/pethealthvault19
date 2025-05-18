@@ -1,0 +1,1223 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+
+:root {
+    --primary: #eeeeee;
+    --secondary: #227c70;
+    --green: #82cd47;
+    --secondary-light: rgb(34, 124, 112, 0.2);
+    --secondary-light-2: rgb(127, 183, 126, 0.1);
+    --white: #fff;
+    --black: #393e46;
+    --shadow: 0px 2px 8px 0px var(--secondary-light);
+    --clr-primary-300: hsl(219, 76%, 55%);
+    --clr-primary-400: hsl(219, 76%, 40%);
+    --clr-primary-500: hsl(219, 76%, 25%);
+    --clr-secondary-300: hsl(269, 75%, 55%);
+    --clr-secondary-400: hsl(269, 75%, 40%);
+    --clr-secondary-500: hsl(269, 75%, 25%);
+    --clr-accent-300: hsl(358, 72%, 65%);
+    --clr-accent-400: hsl(358, 72%, 50%);
+    --clr-accent-500: hsl(358, 72%, 35%);
+    --content-padding: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #eeeeee;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+html,
+body {
+    height: auto !important;
+    overflow-y: auto !important;
+}
+
+.main-content-container,
+.wrapper {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 70px;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    gap: 1px;
+}
+
+.logo-img {
+    width: 80px;
+    height: auto;
+    margin-right: 0px;
+    display: block;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    color: #0e4bf1;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-shadow: 1px 0 0 black;
+}
+
+/* NAVBAR || PROFILE DROPDOWN */
+.profile-notification-wrap {
+    margin-right: 20px;
+}
+
+.profile-dropdown {
+    position: relative;
+    width: fit-content;
+}
+
+.profile-dropdown-btn {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 50px;
+    color: var(--black);
+    cursor: pointer;
+    border: 1px solid #0e4bf1;
+    transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in,
+    border 0.3s;
+}
+
+.profile-dropdown-btn:hover {
+    background-color: var(--secondary-light-2);
+    box-shadow: var(--shadow);
+}
+
+.profile-dropdown-btn span {
+    margin: 0 0.5rem;
+    margin-right: 0;
+}
+
+.profile-dropdown-list {
+    position: absolute;
+    top: 68px;
+    width: 220px;
+    right: 0;
+    background-color: var(--white);
+    border-radius: 10px;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: max-height 0.5s;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-dropdown-list hr {
+    border: 0.5px solid var(--green);
+}
+
+.profile-dropdown-list.active {
+    max-height: 500px;
+}
+
+.profile-dropdown-list-item {
+    list-style-type: none;
+    padding: 0.5rem 0rem 0.5rem 1rem;
+    transition: background-color 0.2s ease-in, padding-left 0.2s;
+}
+
+.profile-dropdown-list-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.profile-dropdown-list-item a i {
+    margin-right: 0.8rem;
+    font-size: 1.1rem;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-color: var(--secondary);
+    color: var(--white);
+    line-height: 2.3rem;
+    text-align: center;
+    margin-right: 1rem;
+    border-radius: 50%;
+    transition: margin-right 0.3s;
+}
+
+.profile-dropdown-list-item:hover {
+    padding-left: 1.5rem;
+    background-color: var(--secondary-light);
+}
+
+/* WELCOME TEXT */
+.welcome {
+    margin-bottom: 2px !important;
+    font-size: 1.3rem !important;
+}
+.subtext {
+    font-size: 0.89rem;
+    color: #555;
+    margin-top: 0 !important;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+/* MAIN CONTENT */
+.main-content-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    height: calc(100vh - 70px - 40px);
+    overflow-y: auto;
+}
+
+/* ASIDE */
+aside {
+    width: 300px;
+    border-radius: 10px;
+    padding: 20px;
+    flex-shrink: 0;
+    margin-left: 15px;
+}
+
+.profile {
+    background-color: #ffffff;
+    border: 2px solid #00506b;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    padding: 20px;
+}
+
+.profile h2 {
+    background-color: #00506b;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: -20px -20px 20px -20px;
+}
+
+.profile p {
+    font-size: 0.9rem;
+}
+
+.profile a{
+  color: #0e4bf1;
+}
+
+.wrapper {
+    flex-grow: 1;
+    padding-top: 20px;
+    overflow-y: auto;
+    margin-right: 15px;
+}
+
+.wrapper h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    padding-left: 0;
+}
+
+/* PET TABS */
+.pet-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 0;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.pet-tabs li {
+    list-style: none;
+}
+
+.pet-tabs a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 1rem 1rem 0 0;
+    color: #333;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pet-tabs a:hover {
+    color: #0e4bf1;
+}
+
+.pet-tabs a.active {
+    color: #0e4bf1;
+    border-bottom: 2px solid #0e4bf1;
+    font-weight: 600;
+}
+
+/* Nested TABS */
+.nested-tabs {
+    list-style: none;
+    margin: 20px 0 0 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid #e1e5eb;
+}
+
+.nested-tabs li a {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.nested-tabs li a:hover {
+    color: #0e4bf1;
+}
+
+.nested-tabs li a.active {
+    color: #0e4bf1;
+    border-bottom-color: #0e4bf1;
+}
+
+/* Tab content container */
+
+.nested-tab-pane {
+    display: none;
+    padding-top: 1rem;
+}
+
+.nested-tab-pane.active {
+    display: block;
+}
+
+.tabs-container {
+    margin-top: 0.5rem; /* fine-tune as needed */
+    padding: 0;
+    border-radius: 0.5rem;
+}
+
+/* Pet Profile Container */
+.pet-profile {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Breathing room between image and info */
+    padding: 1rem 0;
+    flex-wrap: wrap; /* Responsive fallback */
+}
+
+.pet-profile img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px #00506b;
+}
+
+.no-image-placeholder i {
+    font-size: 50px;
+}
+
+.pet-profile:hover {
+    transform: translateY(-3px);
+}
+
+.pet-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.pet-info strong {
+    margin: 0.3rem 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #00506b;
+}
+
+.pet-info p {
+    font-size: 15px;
+    margin: 0;
+}
+
+/* Table */
+.dashboard-section {
+    background: var(--light);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.record-date-dropdown {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin-left: auto;
+}
+
+.record-date-dropdown:focus {
+    outline: none;
+    border-color: #0e4bf1;
+}
+
+h3 {
+    color: #00506b;
+}
+
+h3 i {
+    margin-right: 10px;
+    color: var(--secondary);
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(43, 122, 201, 0.2);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+}
+.health-table {
+    width: 100%;
+    min-width: 800px; /* Ensure it doesn't shrink too much */
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color: #cce4f7;
+    color: #00506b;
+}
+
+table th,
+table td {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--secondary-light-2);
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.no-records {
+    color: #d9534f;
+    font-size: 1rem;
+    text-align: center;
+    padding: 20px;
+}
+
+/*SCHEDULE APPOINTMENT FORM*/
+/* SCHEDULE APPOINTMENT FORM */
+
+.schedule-appointment-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    background-color: #fff;
+    color: #00506b; /* changed from #0E4BF1 */
+    border: 1px solid #00506b; /* changed */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease,
+        border-color 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-appointment-btn:hover {
+    background-color: #00506b; /* changed */
+    color: #fff;
+    border-color: #00506b; /* changed */
+}
+
+.container {
+    padding: 25px 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.container .title {
+    font-size: 24px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #2a7a99, #00506b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.container .title::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 50px;
+    background: #00506b; /* changed from var(--primary-color) or #0E4BF1 */
+    border-radius: 5px;
+}
+
+.content form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+form .user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+form .input-box span.details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.user-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+    border-color: #00506b; /* changed from #9b59b6 */
+}
+
+.user-details .input-box select {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 0 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 5px;
+}
+
+.user-details .input-box select:focus {
+    border-color: #00506b; /* changed */
+}
+
+form .button {
+    height: 45px;
+    margin: 35px 0;
+}
+
+form .button button {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(
+        135deg,
+        #2a7a99,
+        #00506b
+    ); /* updated gradient */
+}
+
+form .button button:hover {
+    background: linear-gradient(
+        -135deg,
+        #2a7a99,
+        #00506b
+    ); /* updated gradient */
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+    z-index: 1000;
+}
+
+.footer p {
+    font-size: 0.8rem;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+/* Laptop 1024px */
+@media (max-width: 1024px) {
+    .logo-img {
+        width: 80px;
+    }
+    .logo-text {
+        font-size: 1.3rem;
+    }
+    .profile-dropdown-btn {
+        font-size: 0.85rem;
+        padding: 0.25rem 0.8rem;
+    }
+
+    h2.welcome {
+        font-size: 1.2rem; /* Reduce welcome text size */
+        margin-bottom: 0.2em;
+    }
+
+    p.subtext {
+        font-size: 0.85rem; /* Smaller than 1rem */
+        line-height: 1.4;
+    }
+
+    /* Main content wrapper */
+    .wrapper {
+        width: 100%;
+        padding: 1rem;
+        margin-right: 0;
+    }
+
+    /* Pet Tabs */
+    .pet-tabs {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .pet-tabs a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Nested Sub-tabs */
+    .nested-tabs {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 10px;
+    }
+
+    .nested-tabs li a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Tables: Scrollable and responsive */
+    .tab-content table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        white-space: nowrap;
+    }
+
+    .tab-content th,
+    .tab-content td {
+        font-size: 0.85rem;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Headings inside tables */
+    .tab-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Buttons */
+    .btn-primary,
+    .schedule-appointment-btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .tab-content {
+        margin-bottom: 2rem;
+    }
+}
+
+/* TABLET - 768PX */
+@media (max-width: 768px) {
+    .logo-img {
+        width: 80px;
+    }
+
+    .navbar {
+        padding: 0.5rem 0.5rem;
+    }
+    .profile-dropdown-btn {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.7rem;
+    }
+
+    .footer p {
+        font-size: 0.7rem;
+    }
+
+    h2.welcome {
+        font-size: 1.1rem;
+        margin-bottom: 0.2em;
+    }
+
+    p.subtext {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .main-content-container {
+        padding: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    aside {
+        display: none;
+    }
+
+    .wrapper {
+        flex-grow: 1;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .pet-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .health-table {
+        min-width: 100%;
+    }
+
+    .record-date-dropdown {
+        width: auto;
+        min-width: 120px;
+        font-size: 0.85rem;
+        padding: 0.3rem 0.8rem;
+        margin-left: auto;
+    }
+
+    .header-row {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    .pet-tabs {
+        flex-wrap: wrap;
+    }
+
+    .nested-tabs {
+        flex-wrap: wrap;
+    }
+}
+
+/* MOBILE L - 425PX */
+@media (max-width: 425px) {
+    .navbar {
+        height: 50px;
+        padding: 0.4rem 0.4rem;
+    }
+    .logo-img {
+        width: 60px;
+    }
+    .logo-text {
+        display: none;
+    }
+    .profile-dropdown-btn {
+        font-size: 0.5rem;
+        padding: 0.15rem 0.6rem;
+    }
+
+    .footer p {
+        font-size: 0.5rem;
+    }
+
+    .message{
+      font-size: 0.6rem;
+    }
+
+    /* WELCOME & SUBTEXT */
+    .welcome {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.25rem;
+    }
+
+    .subtext {
+        font-size: 0.7rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .nested-tabs li a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* PET PROFILE */
+    .pet-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pet-profile img {
+        max-width: 120px;
+        height: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    .pet-profile .profile-info {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    table.health-table {
+        width: 100% !important;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+    }
+
+    /* RECORD DATE DROPDOWN */
+    .dashboard-section .header-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .dashboard-section h3 {
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .record-date-dropdown {
+        font-size: 0.85rem;
+        padding: 0.25rem 0.5rem;
+        max-width: 60%;
+    }
+
+    /* SCHEDULE APPOINTMENT FORM  */
+    .schedule-appointment-form {
+        padding: 0.5rem !important;
+        font-size: 0.9rem;
+        width: 100% !important;
+    }
+
+    .schedule-appointment-form input,
+    .schedule-appointment-form select,
+    .schedule-appointment-form button {
+        font-size: 0.85rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    [id^="appointments-"] .header-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    [id^="appointments-"] h3 {
+        font-size: 1.2rem !important;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    [id^="appointments-"] .schedule-appointment-btn {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .sub-tabs {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: space-around;
+        border-bottom: 1px solid #ccc;
+        padding: 0.25rem 0;
+    }
+
+    .sub-tabs button {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .sub-tabs button.active {
+        border-bottom: 2px solid #0e4bf1;
+    }
+
+    /* SCHEDULE APPOINTMENT CONTAINER */
+    .container {
+        padding: 20px 15px;
+    }
+
+    .container .title {
+        font-size: 20px;
+    }
+
+    .content form .user-details {
+        flex-direction: column;
+    }
+
+    .form .user-details .input-box,
+    form .user-details .input-box {
+        width: 100% !important;
+    }
+
+    .user-details .input-box input,
+    .user-details .input-box select {
+        font-size: 15px;
+        height: 42px;
+    }
+
+    form .button {
+        margin-top: 20px;
+    }
+
+    form .button button {
+        font-size: 16px;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* MOBILE M - 375PX */
+@media (max-width: 375px) {
+    .navbar {
+        height: 50px;
+        padding: 0.4rem 0.4rem;
+    }
+    .logo-img {
+        width: 60px;
+    }
+    .logo-text {
+        display: none;
+    }
+    .navbar {
+        padding: 0.35rem 0.35rem;
+    }
+    .profile-dropdown-btn {
+        font-size: 0.5rem;
+        padding: 0.15rem 0.5rem;
+    }
+
+    /* WELCOME & SUBTEXT */
+    .welcome {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.25rem;
+    }
+
+    .subtext {
+        font-size: 0.7rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .nested-tabs li a {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .dashboard-section .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.3rem 0;
+        flex-wrap: nowrap;
+    }
+
+    .dashboard-section h3 {
+        font-size: 0.9rem;
+        margin: 0;
+        flex: 1 1 auto;
+        white-space: normal;
+    }
+
+    .record-date-dropdown {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.4rem;
+        max-width: 120px;
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    .pet-profile img {
+        max-width: 100px;
+    }
+
+    .pet-profile .profile-info {
+        font-size: 0.8rem;
+    }
+
+    table.health-table {
+        font-size: 0.8rem;
+    }
+
+    /* SCHEDULE APPOINTMENT FORM  */
+    .schedule-appointment-form {
+        padding: 0.5rem !important;
+        font-size: 0.9rem;
+        width: 100% !important;
+    }
+
+    .schedule-appointment-form input,
+    .schedule-appointment-form select,
+    .schedule-appointment-form button {
+        font-size: 0.85rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    [id^="appointments-"] h3 {
+        font-size: 0.80rem !important;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    [id^="appointments-"] .schedule-appointment-btn {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+        font-size: 0.7rem;      /* smaller font size */
+    padding: 0.3rem 0.6rem; /* reduce padding */
+    min-width: unset;   
+    }
+
+    .sub-tabs {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: space-around;
+        border-bottom: 1px solid #ccc;
+        padding: 0.25rem 0;
+    }
+
+    .sub-tabs button {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .sub-tabs button.active {
+        border-bottom: 2px solid #0e4bf1;
+    }
+
+    /* SCHEDULE APPOINTMENT CONTAINER */
+    .container {
+        padding: 20px 15px;
+    }
+
+    .container .title {
+        font-size: 20px;
+    }
+
+    .content form .user-details {
+        flex-direction: column;
+    }
+
+    .form .user-details .input-box,
+    form .user-details .input-box {
+        width: 100% !important;
+    }
+
+    .user-details .input-box input,
+    .user-details .input-box select {
+        font-size: 15px;
+        height: 42px;
+    }
+
+    form .button {
+        margin-top: 20px;
+    }
+
+    form .button button {
+        font-size: 16px;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Mobile S 320px */
+@media (max-width: 320px) {
+    .navbar {
+        height: 40px;
+        padding: 0.4rem 0.4rem;
+    }
+    .logo-img {
+        width: 50px;
+    }
+    .logo-text {
+        display: none;
+    }
+    .navbar {
+        padding: 0.3rem 0.3rem;
+    }
+
+    /* WELCOME & SUBTEXT */
+    .welcome {
+        font-size: 0.85rem !important;
+        margin-bottom: 0.25rem;
+    }
+
+    .subtext {
+        font-size: 0.5rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .nested-tabs li a {
+        font-size: 0.55rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .dashboard-section .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.7rem;
+        margin: 0.3rem 0;
+        flex-wrap: nowrap;
+    }
+
+    .dashboard-section h3 {
+        font-size: 0.7rem;
+        margin: 0;
+        flex: 1 1 auto;
+        white-space: normal;
+    }
+
+    .record-date-dropdown {
+        font-size: 0.6rem !important;
+        padding: 0.15rem 0.25rem !important;
+        max-width: 80px !important;
+        min-width: 0 !important;
+        width: 80px !important;
+        flex-shrink: 1 !important; /* allow shrinking */
+        white-space: nowrap; /* keep text on one line */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .pet-profile {
+        text-align: center; /* Center all inline content */
+    }
+    .pet-profile img.pet-profile-image {
+        display: block;
+        margin-right: 40px; /* center the image */
+        max-width: 80px; /* adjust size as needed */
+        height: auto;
+    }
+
+    .no-image-placeholder {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1rem auto; /* center and spacing */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        color: #888;
+    }
+
+    .pet-info {
+        display: block;
+        margin: 0.5rem auto 0 auto; /* center horizontally */
+        max-width: 90%;
+        text-align: left; /* keep text left-aligned */
+    }
+
+    .pet-details p {
+        font-size: 0.8rem;
+        margin: 0.15rem 0;
+    }
+}
