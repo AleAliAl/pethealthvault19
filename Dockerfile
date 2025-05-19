@@ -1,25 +1,28 @@
-# Stage 1: Build dependencies
-FROM composer:2.7 AS vendor
-
-WORKDIR /app
-COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Stage 2: PHP runtime
-FROM php:8.2-fpm
+# Use PHP image with Composer and required extensions
+FROM php:8.2-cli
 
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
-    libpq-dev libzip-dev unzip git curl \
+    libpq-dev libzip-dev unzip git curl zip \
     && docker-php-ext-install pdo pdo_pgsql zip mbstring exif pcntl
 
+# Install Composer globally
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
+
+# Set working directory
 WORKDIR /var/www
 
+# Copy everything
 COPY . .
 
-COPY --from=vendor /app/vendor ./vendor
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction || true
 
+# Set permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-EXPOSE 9000
-CMD ["php-fpm"]
+# Expose port Render expects
+EXPOSE 10000
+
+# Start Laravel server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
