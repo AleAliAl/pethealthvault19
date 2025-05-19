@@ -16,7 +16,7 @@ services:
       - key: APP_DEBUG
         value: false
       - key: APP_URL
-        value: https://pethealthvault19-3.onrender.com
+        value: https://pethealthvault19-4.onrender.com
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_HOST
