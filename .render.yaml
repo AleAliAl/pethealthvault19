@@ -1,31 +1,9 @@
 services:
   - type: web
-    name: pethealthvault
+    name: laravel-app
     env: docker
     plan: free
-    repo: https://github.com/AleAliAl/pethealthvault19.git
-    branch: main
     dockerfilePath: ./Dockerfile
-    buildCommand: ""
-    startCommand: ""
     envVars:
       - key: APP_ENV
         value: production
-      - key: APP_KEY
-        value: base64:SVaXODw5c3MnbBAtAqsefpXPAI3sNLPK015BgEZdE80=
-      - key: APP_DEBUG
-        value: false
-      - key: APP_URL
-        value: https://pethealthvault19-4.onrender.com
-      - key: DB_CONNECTION
-        value: pgsql
-      - key: DB_HOST
-        value: d0la0b7fte5s739ao38g-a
-      - key: DB_PORT
-        value: 5432
-      - key: DB_DATABASE
-        value: pethealthvault
-      - key: DB_USERNAME
-        value: pethealthvault_user
-      - key: DB_PASSWORD
-        value: YI8xuYg6hU8uLbBhG88DOaG2RapkDvRT
