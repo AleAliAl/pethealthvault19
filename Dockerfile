@@ -1,5 +1,7 @@
+# Stage 1 - Build
 FROM php:8.2-fpm
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     libicu-dev \
     libzip-dev \
@@ -9,22 +11,21 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     && docker-php-ext-configure intl \
-    && docker-php-ext-install intl zip pdo pdo_mysql pdo_pgsql pgsql
+    && docker-php-ext-install intl zip pdo pdo_pgsql pgsql
 
+# Set working directory
+WORKDIR /var/www
 
-# Copy composer and install dependencies
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-
-WORKDIR /var/www/html
-
-COPY composer.json composer.lock ./
-
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Copy the rest of your app
+# Copy all files first
 COPY . .
 
-# Build your frontend (if you have node stuff)
-RUN npm install && npm run build
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+# Set permissions (optional for Laravel)
+RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www
+
+# Expose port (for FPM)
+EXPOSE 9000
 
 CMD ["php-fpm"]
