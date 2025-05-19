@@ -1,31 +1,28 @@
-# Stage 1 - Build
-FROM php:8.2-fpm
+# Stage 1: Build PHP dependencies using Composer
+FROM composer:2.7 as composer
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libicu-dev \
-    libzip-dev \
-    libpq-dev \
-    zip \
-    unzip \
-    git \
-    curl \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-install intl zip pdo pdo_pgsql pgsql
-
-# Set working directory
-WORKDIR /var/www
-
-# Copy all files first
-COPY . .
-
-# Install PHP dependencies
+WORKDIR /app
+COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Set permissions (optional for Laravel)
-RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www
+# Stage 2: Laravel + PHP
+FROM php:8.2-fpm
 
-# Expose port (for FPM)
+# Install system dependencies and PHP extensions
+RUN apt-get update && apt-get install -y \
+    libpq-dev zip unzip git curl libonig-dev libxml2-dev libzip-dev \
+    && docker-php-ext-install pdo pdo_pgsql mbstring zip exif pcntl
+
+WORKDIR /var/www
+
+COPY . .
+
+# Copy built vendor directory from composer stage
+COPY --from=composer /app/vendor ./vendor
+
+RUN chown -R www-data:www-data \
+    /var/www/storage \
+    /var/www/bootstrap/cache
+
 EXPOSE 9000
-
 CMD ["php-fpm"]
